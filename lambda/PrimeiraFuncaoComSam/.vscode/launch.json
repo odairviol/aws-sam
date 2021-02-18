@@ -1,0 +1,21 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API PrimeiraFuncaoComSam:PrimeiraFuncaoComSam",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "template.yaml",
+                "logicalId": "PrimeiraFuncaoComSam"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        }
+    ]
+}

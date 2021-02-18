@@ -1,0 +1,98 @@
+{
+    "type": "aws-sam",
+    "request": "direct-invoke",
+    "name": "my-config",
+    "invokeTarget": {
+        "target": "code",
+        "projectRoot": "src",
+        "lambdaHandler": "lambdaHandler"
+    },
+    "lambda": {
+        "runtime": "nodejs12.x",
+        "event": {},
+        "environmentVariables": {}
+    },
+    "sam": {},
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "LambdaNodeComSam:PrimeiraLambdaComSam",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "LambdaNodeComSam/template.yaml",
+                "logicalId": "PrimeiraLambdaComSam"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API LambdaNodeComSam:PrimeiraLambdaComSam",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "LambdaNodeComSam/template.yaml",
+                "logicalId": "PrimeiraLambdaComSam"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API LambdaNodeComSam:PrimeiraLambdaComSam",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "LambdaNodeComSam/template.yaml",
+                "logicalId": "PrimeiraLambdaComSam"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "LambdaNodeComSam:app.lambdaHandler (nodejs12.x)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "LambdaNodeComSam/hello-world",
+                "lambdaHandler": "app.lambdaHandler"
+            },
+            "lambda": {
+                "runtime": "nodejs12.x",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "API LambdaNodeComSam:PrimeiraLambdaComSam",
+            "invokeTarget": {
+                "target": "api",
+                "templatePath": "LambdaNodeComSam/template.yaml",
+                "logicalId": "PrimeiraLambdaComSam"
+            },
+            "api": {
+                "path": "/hello",
+                "httpMethod": "get",
+                "payload": {
+                    "json": {}
+                }
+            }
+        }
+    ]
+ }

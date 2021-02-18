@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Resources: 
+  PrimeiraFilaCloudFormation: 
+    Type: AWS::SQS::Queue
+    Properties: 
+      RedrivePolicy: 
+        deadLetterTargetArn: 
+          Fn::GetAtt: 
+            - "PrimeiraFilaDLQCloudFormation"
+            - "Arn"
+        maxReceiveCount: 5
+  PrimeiraFilaDLQCloudFormation: 
+    Type: AWS::SQS::Queue
+
+
+Outputs: 
+  SourceQueueURL: 
+    Description: "URL of source queue"
+    Value: 
+      Ref: "PrimeiraFilaCloudFormation"
+  SourceQueueARN: 
+    Description: "ARN of source queue"
+    Value: 
+      Fn::GetAtt: 
+        - "PrimeiraFilaCloudFormation"
+        - "Arn"
+  DeadLetterQueueURL: 
+    Description: "URL of dead-letter queue"
+    Value: 
+      Ref: "PrimeiraFilaDLQCloudFormation"
+  DeadLetterQueueARN: 
+    Description: "ARN of dead-letter queue"
+    Value: 
+      Fn::GetAtt: 
+        - "PrimeiraFilaDLQCloudFormation"
+        - "Arn"
